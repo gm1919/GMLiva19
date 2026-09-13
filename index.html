@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#b7f34a">
+  <meta name="description" content="GMLiva — your personal AI social-media assistant.">
+  <title>GMLiva — Create. Improve. Share smarter.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-orb orb-a"></div>
+  <div class="bg-orb orb-b"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="GMLiva home">
+      <span class="brand-mark monogram" aria-label="G M L logo"><span>G</span><span>M</span><span>L</span></span><span class="brand-word">GMLiva</span>
+    </a>
+    <nav>
+      <a href="#studio">AI Studio</a>
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a><a href="#privacy">Privacy</a>
+    </nav>
+    <a class="header-cta" href="#studio">Try GMLiva <span>→</span></a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span></span> PERSONAL AI CONTENT ASSISTANT</div>
+        <h1>Create.<br><em>Improve.</em><br>Share smarter.</h1>
+        <p class="hero-text">Turn 2–3 of your own photos into a complete, social-media-ready content plan — without losing what makes the original photo yours.</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#studio">Start with your photos <span>↗</span></a>
+          <a class="text-btn" href="#how">See how it works</a>
+        </div>
+        <div class="trust-row">
+          <span>✓ Your approval stays in control</span>
+          <span>✓ No auto-publishing</span>
+        </div>
+      </div>
+
+      <div class="hero-flow">
+        <div class="flow-card main-flow-card">
+          <div class="flow-top"><span>GMLiva workflow</span><span class="live-dot">LIVE</span></div>
+          <div class="flow-chain">
+            <div class="flow-step active"><b>01</b><strong>Photos</strong><small>2–3 uploads</small></div>
+            <div class="flow-line"></div>
+            <div class="flow-step"><b>02</b><strong>Analyse</strong><small>AI vision</small></div>
+            <div class="flow-line"></div>
+            <div class="flow-step"><b>03</b><strong>Choose</strong><small>Best shot</small></div>
+          </div>
+          <div class="mini-result">
+            <div class="result-icon">✦</div>
+            <div><small>GMLiva recommendation</small><strong>Photo 2 has the strongest overall balance.</strong></div>
+            <span class="score">92</span>
+          </div>
+          <div class="chips"><span>Pose Studio</span><span>Aesthetic</span><span>Caption</span><span>Stories</span></div>
+        </div>
+        <div class="floating-note note-one">Natural pose ideas <b>5</b></div>
+        <div class="floating-note note-two">Approval first <b>✓</b></div>
+      </div>
+    </section>
+
+    <section class="studio-section" id="studio">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow"><span></span> AI STUDIO</div>
+          <h2>Your photos. <em>GMLiva's eye.</em></h2>
+        </div>
+        <p>Upload 2–3 photos. GMLiva analyses the set, picks the strongest image, then builds your content direction around it.</p>
+      </div>
+
+      <div class="studio-shell">
+        <div class="studio-topbar">
+          <div class="studio-brand"><span class="tiny-mark monogram mini-monogram" aria-label="G M L logo"><span>G</span><span>M</span><span>L</span></span> AI Studio</div>
+          <div class="step-indicator"><span class="done">01 Upload</span><i></i><span>02 Analyse</span><i></i><span>03 Create</span><i></i><span>04 Approve</span></div>
+        </div>
+
+        <div class="upload-area" id="dropZone">
+          <input id="photoInput" type="file" accept="image/jpeg,image/png,image/webp" multiple hidden>
+          <div class="upload-icon">＋</div>
+          <h3>Drop 2–3 photos here</h3>
+          <p>or choose them from your device</p>
+          <button class="outline-btn" id="chooseBtn" type="button">Choose photos</button>
+          <small>JPG, PNG or WebP · up to 3 photos · processed for this session</small>
+        </div>
+
+        <div id="previewSection" class="preview-section hidden">
+          <div class="subhead"><div><span class="eyebrow small">YOUR PHOTOS</span><h3>Choose the set you want GMLiva to analyse.</h3></div><button class="link-btn" id="clearBtn" type="button">Clear all</button></div>
+          <div id="previewGrid" class="preview-grid"></div>
+          <div class="analyze-row">
+            <div class="privacy-note"><span>🔒</span><div><strong>Private by design</strong><small>Photos are sent only when you press Analyse. GMLiva's backend does not save them.</small></div></div>
+            <button class="primary-btn analyze-btn" id="analyzeBtn" type="button" disabled>Analyse my photos <span>→</span></button>
+          </div>
+        </div>
+
+        <div id="loadingState" class="loading-state hidden">
+          <div class="loader"></div>
+          <div><strong>GMLiva is looking closely…</strong><p>Comparing composition, light, framing and overall social-media fit.</p></div>
+        </div>
+
+        <div id="results" class="results hidden">
+          <div class="result-header">
+            <div><div class="eyebrow small">ANALYSIS COMPLETE</div><h3>Here’s what GMLiva sees.</h3></div>
+            <button class="secondary-btn" id="newAnalysisBtn" type="button">New analysis</button>
+          </div>
+
+          <div class="best-card">
+            <div class="best-photo-wrap"><img id="bestPhoto" alt="GMLiva recommended photo"></div>
+            <div class="best-copy">
+              <span class="best-label">✦ STRONGEST PHOTO</span>
+              <h3 id="bestTitle">Photo 2</h3>
+              <p id="bestReason"></p>
+              <div id="analysisScores" class="score-list"></div>
+            </div>
+          </div>
+
+          <div class="result-grid">
+            <section class="result-card wide pose-studio-card">
+              <div class="card-title"><span class="card-number">01</span><div><h4>AI Pose Studio</h4><p>Actual AI-edited pose versions of your selected photo.</p></div></div>
+              <div class="pose-intro">
+                <div><span>✦</span><div><strong>See the pose — don't just read it.</strong><p>GMLiva will edit the strongest photo into five natural pose variations while aiming to preserve your face, identity, clothing and proportions.</p></div></div>
+                <button class="primary-btn" id="generatePosesBtn" type="button">Generate 5 pose versions <span>✦</span></button>
+              </div>
+              <div id="poseStatus" class="pose-status hidden"></div>
+              <div id="poseList" class="pose-grid"></div>
+            </section>
+
+            <section class="result-card">
+              <div class="card-title"><span class="card-number">02</span><div><h4>Background & aesthetic</h4><p>Directions that fit the selected photo.</p></div></div>
+              <div id="aestheticList" class="aesthetic-list"></div>
+            </section>
+
+            <section class="result-card">
+              <div class="card-title"><span class="card-number">03</span><div><h4>Your post package</h4><p>Ready for your review.</p></div></div>
+              <div id="postPackage"></div>
+            </section>
+
+            <section class="result-card">
+              <div class="card-title"><span class="card-number">04</span><div><h4>Story plan</h4><p>A simple three-slide sequence.</p></div></div>
+              <div id="storyList"></div>
+            </section>
+
+            <section class="result-card">
+              <div class="card-title"><span class="card-number">05</span><div><h4>Collage ideas</h4><p>Use your original photos together.</p></div></div>
+              <div id="collageList"></div>
+            </section>
+
+            <section class="result-card">
+              <div class="card-title"><span class="card-number">06</span><div><h4>Highlights</h4><p>Names, themes and cover directions for your profile.</p></div></div>
+              <div id="highlightList" class="pill-list"></div>
+            </section>
+            <section class="result-card">
+              <div class="card-title"><span class="card-number">07</span><div><h4>Music Studio</h4><p>Keep a shortlist for posts and stories.</p></div></div>
+              <div id="musicList" class="music-list"></div>
+            </section>
+
+            <section class="result-card wide">
+              <div class="card-title"><span class="card-number">08</span><div><h4>Content planner</h4><p>Keep the next few posts moving.</p></div></div>
+              <div id="plannerList" class="planner-list"></div>
+            </section>
+          </div>
+
+          <div class="approval-card">
+            <div><span class="approval-icon">✓</span><div><span class="eyebrow small">APPROVAL CENTRE</span><h3>Nothing goes live without you.</h3><p>Review the photo, pose, aesthetic and content above. GMLiva never publishes automatically.</p></div></div>
+            <button class="primary-btn" id="approveBtn" type="button">Approve this package <span>✓</span></button>
+          </div>
+          <div id="approvedState" class="approved-state hidden">✓ Package approved for sharing. You stay in control of where and when you publish.</div>
+        </div>
+
+        <div id="errorBox" class="error-box hidden"></div>
+      </div>
+    </section>
+
+    <section class="how-section" id="how">
+      <div class="section-heading centered"><div><div class="eyebrow"><span></span> SIMPLE FLOW</div><h2>From photo to <em>ready-to-share.</em></h2></div></div>
+      <div class="timeline">
+        <div><b>01</b><strong>Upload</strong><p>Give GMLiva 2–3 photos.</p></div>
+        <div><b>02</b><strong>Analyse</strong><p>Compare light, framing and composition.</p></div>
+        <div><b>03</b><strong>Choose</strong><p>Pick the strongest shot.</p></div>
+        <div><b>04</b><strong>Pose & aesthetic</strong><p>Get natural directions.</p></div>
+        <div><b>05</b><strong>Create</strong><p>Build post and story content.</p></div>
+        <div><b>06</b><strong>Approve</strong><p>You make the final call.</p></div>
+      </div>
+    </section>
+
+    <section class="features-section" id="features">
+      <div class="section-heading">
+        <div><div class="eyebrow"><span></span> BUILT AROUND THE PHOTO</div><h2>More than a <em>caption tool.</em></h2></div>
+        <p>GMLiva starts with your visual content and helps shape everything around it.</p>
+      </div>
+      <div class="feature-grid">
+        <div><span>✦</span><h3>Photo intelligence</h3><p>Compare your own photos and explain which one works best.</p></div>
+        <div><span>◌</span><h3>Natural Pose Studio</h3><p>Five practical pose directions instead of artificial-looking edits.</p></div>
+        <div><span>⌁</span><h3>Aesthetic direction</h3><p>Background, lighting and mood ideas matched to the selected shot.</p></div>
+        <div><span>Aa</span><h3>Complete content</h3><p>Caption, music suggestions, hashtags and posting guidance.</p></div>
+        <div><span>▧</span><h3>Stories & collages</h3><p>Turn the same photo set into more than one piece of content.</p></div>
+        <div><span>✓</span><h3>Approval first</h3><p>You review everything. There is no automatic publishing.</p></div>
+      </div>
+    </section>
+
+    <section class="privacy-section" id="privacy">
+      <div class="privacy-panel">
+        <div>
+          <div class="eyebrow"><span></span> PRIVACY & SECURITY</div>
+          <h2>Your photos stay <em>under your control.</em></h2>
+          <p>GMLiva is designed so your own backend does not permanently store uploaded photos. Images are sent only when you request an AI operation. Your API key stays server-side, and nothing is published automatically.</p>
+        </div>
+        <div class="privacy-points">
+          <div><b>🔒</b><span><strong>No permanent photo library</strong><small>Uploads are processed for the requested session/task.</small></span></div>
+          <div><b>🛡️</b><span><strong>Server-side API key</strong><small>Your OpenAI key is never placed in the browser.</small></span></div>
+          <div><b>✓</b><span><strong>Approval before sharing</strong><small>GMLiva does not auto-publish to social platforms.</small></span></div>
+          <div><b>🧹</b><span><strong>Clear your session</strong><small>Use Clear all / New analysis to remove local working images.</small></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer-cta">
+      <div><span class="eyebrow">GMLIVA</span><h2>Make your next photo <em>work harder.</em></h2></div>
+      <a class="primary-btn" href="#studio">Open AI Studio <span>↗</span></a>
+    </section>
+  </main>
+
+  <footer><span class="footer-brand"><span class="tiny-mark monogram mini-monogram"><span>G</span><span>M</span><span>L</span></span> GMLiva</span><span>Personal AI social-media assistant</span><span>Approval first · No auto-publishing</span></footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
